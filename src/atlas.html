@@ -1,0 +1,281 @@
+<div id="enchiridion-atlas" class="atlas">
+  <header class="atlas-header">
+    <div><span class="atlas-eyebrow">The Tester’s Handbook · @@EDITION@@</span><h1>An atlas of ideas</h1></div>
+    <span class="atlas-edition">52 chapters · Review edition</span>
+  </header>
+  <p class="atlas-intro">Choose an idea, follow it to a chapter, then explore its connections to testing. The links are interpretations you can question and improve.</p>
+  <div class="atlas-jump"><label for="atlas-chapter-select">Go to a chapter</label><select id="atlas-chapter-select"></select><button type="button" id="atlas-previous" aria-label="Previous chapter">Previous</button><button type="button" id="atlas-next" aria-label="Next chapter">Next</button><a id="atlas-permalink" href="#chapter-5">Link to this chapter</a></div>
+  <section class="atlas-ideas" aria-labelledby="atlas-ideas-label">
+    <h2 id="atlas-ideas-label">Epictetus · concepts</h2>
+    <div id="atlas-idea-buttons" class="atlas-word-list"></div>
+  </section>
+  <div class="atlas-map" id="atlas-map">
+    <svg id="atlas-connections" aria-hidden="true"></svg>
+    <section class="atlas-passages" aria-labelledby="atlas-passages-label">
+      <h2 id="atlas-passages-label">Enchiridion</h2>
+      <div id="atlas-passage-buttons" class="atlas-number-list"></div>
+    </section>
+    <section class="atlas-adaptation" aria-labelledby="atlas-adaptation-label">
+      <h2 id="atlas-adaptation-label">Tester’s chapter</h2>
+      <div class="atlas-chapter-node" id="atlas-chapter-node">
+        <span id="atlas-chapter-number" class="atlas-section-number"></span>
+        <span id="atlas-chapter-title"></span>
+      </div>
+      <span id="atlas-treatment" class="atlas-connection-label"></span>
+    </section>
+    <section class="atlas-testing" aria-labelledby="atlas-testing-label">
+      <h2 id="atlas-testing-label">Testing concepts</h2>
+      <div id="atlas-testing-buttons" class="atlas-topic-list"></div>
+    </section>
+  </div>
+  <section id="atlas-neighbors" class="atlas-neighbors" hidden aria-labelledby="atlas-neighbors-label">
+    <h2 id="atlas-neighbors-label"></h2>
+    <div id="atlas-neighbor-buttons" class="atlas-number-list"></div>
+  </section>
+  <section class="atlas-reader" aria-label="Selected chapter text">
+    <div class="atlas-reader-header">
+      <div class="atlas-reader-choice" aria-label="Choose which text to read">
+        <button type="button" data-action="read" data-value="modern" aria-pressed="true">Tester’s chapter</button>
+        <button type="button" data-action="read" data-value="original" aria-pressed="false">Carter passage</button>
+      </div>
+      <span id="atlas-reading-label" class="atlas-reading-label"></span>
+    </div>
+    <article id="atlas-reader-text"></article>
+    <p id="atlas-source-credit" class="atlas-source-credit" hidden></p>
+  </section>
+  <footer class="atlas-footer">Concept links are proposed readings. Numbering follows Carter’s 1759 edition; §29 uses its cross-reference to the Discourses. The Carter view contains selected checked passages, with links to the full source. <a href="sources.html">Source record</a>.</footer>
+  <p id="atlas-status" class="atlas-sr" role="status" aria-live="polite"></p>
+</div>
+<style>
+  #enchiridion-atlas {
+    color-scheme:light;
+    --atlas-paper:#faf9f5;--atlas-text:#25332d;--atlas-secondary:#59685f;--atlas-line:#c4cec6;--atlas-soft:#ecefe9;--atlas-selected:#294b3a;--atlas-on-selected:#fff;--atlas-ring:#477a60;
+    --atlas-paper:light-dark(#faf9f5,#1d2220);
+    --atlas-text:light-dark(#25332d,#e5eae5);
+    --atlas-secondary:light-dark(#59685f,#b1bdb4);
+    --atlas-line:light-dark(#c4cec6,#55645a);
+    --atlas-soft:light-dark(#ecefe9,#29352d);
+    --atlas-selected:light-dark(#294b3a,#c9ddcd);
+    --atlas-on-selected:light-dark(#ffffff,#1b2e22);
+    --atlas-ring:light-dark(#477a60,#9cceb0);
+    background:var(--atlas-paper);color:var(--atlas-text);border:1px solid var(--atlas-line);border-radius:12px;
+    padding:24px;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:14px;line-height:1.5;box-sizing:border-box;
+  }
+  #enchiridion-atlas * { box-sizing:border-box; }
+  #enchiridion-atlas .atlas-header { display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px; }
+  #enchiridion-atlas h1 { margin:3px 0 0;font-family:Georgia,serif;font-weight:400;font-size:26px;line-height:1.25; }
+  #enchiridion-atlas h2 { margin:0 0 10px;font-size:12px;font-weight:500;color:var(--atlas-secondary); }
+  #enchiridion-atlas .atlas-eyebrow,#enchiridion-atlas .atlas-edition { font-size:12px;color:var(--atlas-secondary); }
+  #enchiridion-atlas .atlas-edition { white-space:nowrap; }
+  #enchiridion-atlas .atlas-word-list { display:flex;flex-wrap:wrap;gap:8px; }
+  #enchiridion-atlas button {
+    font:inherit;color:var(--atlas-text);background:var(--atlas-paper);border:1px solid var(--atlas-line);
+    border-radius:6px;padding:8px 11px;min-height:40px;text-align:left;overflow-wrap:anywhere;
+  }
+  #enchiridion-atlas button:hover { background:var(--atlas-soft); }
+  #enchiridion-atlas button:focus-visible { outline:2px solid var(--atlas-ring);outline-offset:3px; }
+  #enchiridion-atlas button[aria-pressed="true"] { color:var(--atlas-on-selected);background:var(--atlas-selected);border-color:var(--atlas-selected); }
+  #enchiridion-atlas .atlas-map { position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr) minmax(0,1fr);gap:42px;margin:30px 0 22px;align-items:start; }
+  #enchiridion-atlas .atlas-map > section { min-width:0;position:relative;z-index:1; }
+  #enchiridion-atlas #atlas-connections { position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible; }
+  #enchiridion-atlas #atlas-connections path { fill:none;stroke:var(--atlas-line);stroke-width:1.5; }
+  #enchiridion-atlas #atlas-connections .atlas-main-edge { stroke:var(--atlas-selected); }
+  #enchiridion-atlas .atlas-number-list { display:flex;flex-wrap:wrap;gap:6px; }
+  #enchiridion-atlas .atlas-number-list button { min-width:43px;text-align:center;padding:8px; }
+  #enchiridion-atlas .atlas-chapter-node { display:flex;flex-direction:column;gap:9px;background:var(--atlas-soft);border:1px solid var(--atlas-line);padding:15px 13px;border-radius:6px;font-family:Georgia,serif;font-size:17px;line-height:1.4;overflow-wrap:anywhere; }
+  #enchiridion-atlas .atlas-section-number { font:500 12px system-ui,sans-serif;color:var(--atlas-secondary); }
+  #enchiridion-atlas .atlas-connection-label { display:block;color:var(--atlas-secondary);font-size:12px;margin-top:8px; }
+  #enchiridion-atlas .atlas-topic-list { display:flex;flex-direction:column;gap:8px;align-items:stretch; }
+  #enchiridion-atlas .atlas-neighbors { margin:0 0 20px;padding-top:14px;border-top:1px solid var(--atlas-line); }
+  #enchiridion-atlas .atlas-reader { border-top:1px solid var(--atlas-line);padding-top:17px; }
+  #enchiridion-atlas .atlas-reader-header { display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px; }
+  #enchiridion-atlas .atlas-reader-choice { display:flex;gap:6px; }
+  #enchiridion-atlas .atlas-reader-choice button { font-size:12px;padding:6px 10px;min-height:34px; }
+  #enchiridion-atlas .atlas-reading-label { font-size:12px;color:var(--atlas-secondary); }
+  #enchiridion-atlas article { font-family:Georgia,"Times New Roman",serif;font-size:16px;line-height:1.7;overflow-wrap:anywhere; }
+  #enchiridion-atlas article p { margin:0 0 13px; }
+  #enchiridion-atlas article p:last-child { margin-bottom:0; }
+  #enchiridion-atlas article strong { font-weight:500; }
+  #enchiridion-atlas .atlas-source-credit { font-size:12px;color:var(--atlas-secondary);margin:16px 0 0; }
+  #enchiridion-atlas a { color:var(--atlas-text);text-decoration:underline;text-underline-offset:3px; }
+  #enchiridion-atlas .atlas-footer { margin-top:22px;font-size:11px;color:var(--atlas-secondary); }
+  #enchiridion-atlas .atlas-sr { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0; }
+  #enchiridion-atlas [hidden] { display:none !important; }
+  @media(max-width:580px) {
+    #enchiridion-atlas { padding:16px; }
+    #enchiridion-atlas h1 { font-size:23px; }
+    #enchiridion-atlas .atlas-header { align-items:start; }
+    #enchiridion-atlas .atlas-map { grid-template-columns:minmax(0,1fr);gap:32px;margin-top:24px; }
+    #enchiridion-atlas .atlas-topic-list { flex-direction:row;flex-wrap:wrap;align-items:start; }
+    #enchiridion-atlas .atlas-map h2 { background:var(--atlas-paper);display:inline-block;padding-right:8px; }
+    #enchiridion-atlas .atlas-chapter-node { max-width:100%; }
+  }
+  @media(pointer:coarse) {
+    #enchiridion-atlas button,#enchiridion-atlas .atlas-reader-choice button { min-height:44px; }
+  }
+
+  #enchiridion-atlas .atlas-intro {max-width:70ch;margin:0 0 20px;color:var(--atlas-secondary);}
+  #enchiridion-atlas .atlas-jump {display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:0 0 24px;}
+  #enchiridion-atlas .atlas-jump label {font-size:12px;}
+  #enchiridion-atlas .atlas-jump select {min-width:0;max-width:100%;flex:1 1 280px;padding:10px;border:1px solid var(--atlas-line);border-radius:6px;background:var(--atlas-paper);color:var(--atlas-text);font:inherit;}
+  #enchiridion-atlas button:disabled {opacity:.4;cursor:default;}
+  #enchiridion-atlas .atlas-jump a {font-size:12px;}
+  @media(max-width:580px){#enchiridion-atlas .atlas-jump label{width:100%}#enchiridion-atlas .atlas-jump select{flex-basis:100%}#enchiridion-atlas .atlas-header{flex-wrap:wrap}}
+</style>
+<script type="application/json" id="enchiridion-atlas-data">@@ATLAS_DATA@@</script>
+<script id="enchiridion-atlas-model">
+function createEnchiridionAtlasModel(data) {
+  const ideas=new Map(data.ideas.map(item=>[item.id,item]));
+  const chapters=new Map(data.chapters.map(item=>[item.n,item]));
+  const tests=new Map(data.tests.map(item=>[item.id,item]));
+  const state={idea:'judgment',chapter:5,test:null,reading:'modern'};
+  function view() {
+    const chapter=chapters.get(state.chapter);
+    return { ...state,ideaNode:ideas.get(state.idea),chapterNode:chapter,
+      testNodes:chapter.tests.map(id=>tests.get(id)),
+      related:state.test?tests.get(state.test).chapters.filter(n=>n!==state.chapter):[],
+      testNode:state.test?tests.get(state.test):null };
+  }
+  function selectIdea(id) {
+    if(!ideas.has(id))throw new Error('Unknown idea');
+    state.idea=id;
+    if(!ideas.get(id).chapters.includes(state.chapter))state.chapter=ideas.get(id).chapters[0];
+    state.test=null;state.reading='modern';return view();
+  }
+  function selectChapter(n) {
+    n=Number(n);if(!chapters.has(n))throw new Error('Unknown chapter');
+    state.chapter=n;
+    if(!ideas.get(state.idea).chapters.includes(n))state.idea=data.ideas.find(idea=>idea.chapters.includes(n)).id;
+    if(state.test&&!chapters.get(n).tests.includes(state.test))state.test=null;
+    state.reading='modern';return view();
+  }
+  function selectTest(id) {
+    if(!chapters.get(state.chapter).tests.includes(id))throw new Error('Unconnected testing concept');
+    state.test=state.test===id?null:id;return view();
+  }
+  function selectReading(which) {
+    if(!['modern','original'].includes(which))throw new Error('Unknown reading');
+    state.reading=which;return view();
+  }
+  return {view,selectIdea,selectChapter,selectTest,selectReading};
+}
+</script>
+<script>
+(() => {
+  const root=document.getElementById('enchiridion-atlas');
+  const data=JSON.parse(document.getElementById('enchiridion-atlas-data').textContent);
+  const model=createEnchiridionAtlasModel(data);
+  const byId=id=>root.querySelector('#'+id);
+  const ideaButtons=byId('atlas-idea-buttons');
+  const passageButtons=byId('atlas-passage-buttons');
+  const testingButtons=byId('atlas-testing-buttons');
+  const neighborButtons=byId('atlas-neighbor-buttons');
+  const reader=byId('atlas-reader-text');
+  const graph=byId('atlas-map');
+  const svg=byId('atlas-connections');
+  const ns='http://www.w3.org/2000/svg';
+  const chapterById=new Map(data.chapters.map(c=>[c.n,c]));
+  const escape=s=>s.replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  function paragraphs(text,markdown) {
+    return text.split(/\n\s*\n/).map(p=>{
+      let value=escape(p.trim()).replace(/\n/g,' ');
+      if(markdown)value=value.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+      return '<p>'+value+'</p>';
+    }).join('');
+  }
+  function button(action,value,label,pressed,accessibleLabel) {
+    const b=document.createElement('button');b.type='button';b.className='cursor-interaction';
+    b.dataset.action=action;b.dataset.value=String(value);b.textContent=label;
+    b.setAttribute('aria-pressed',String(Boolean(pressed)));
+    if(accessibleLabel){b.setAttribute('aria-label',accessibleLabel);b.dataset.tooltip=accessibleLabel;}
+    return b;
+  }
+  function drawConnections() {
+    const box=graph.getBoundingClientRect();
+    svg.setAttribute('viewBox',`0 0 ${box.width} ${box.height}`);svg.replaceChildren();
+    const active=passageButtons.querySelector('[aria-pressed="true"]');
+    const center=byId('atlas-chapter-node');
+    if(!active||!center||!box.width)return;
+    const narrow=getComputedStyle(graph).gridTemplateColumns.split(' ').length===1;
+    function rect(element){const r=element.getBoundingClientRect();return {x:r.left-box.left,y:r.top-box.top,w:r.width,h:r.height};}
+    function connect(from,to,main) {
+      const a=rect(from),b=rect(to);let d;
+      if(narrow){
+        const origin=from===active?rect(passageButtons):rect(root.querySelector('.atlas-adaptation'));
+        const x1=origin.x+origin.w/2,y1=origin.y+origin.h,x2=b.x+b.w/2,y2=b.y;
+        const mid=(y1+y2)/2;d=`M${x1},${y1}C${x1},${mid} ${x2},${mid} ${x2},${y2}`;
+      }else if(from===active){
+        const group=rect(passageButtons),port=group.x+group.w+18,gap=a.y+a.h+3;
+        const x2=b.x,y2=b.y+b.h/2;
+        d=`M${a.x+a.w/2},${a.y+a.h}V${gap}H${port}C${port},${gap} ${port},${y2} ${x2},${y2}`;
+      }else {const x1=a.x+a.w,y1=a.y+a.h/2,x2=b.x,y2=b.y+b.h/2;const mid=(x1+x2)/2;d=`M${x1},${y1}C${mid},${y1} ${mid},${y2} ${x2},${y2}`;}
+      const path=document.createElementNS(ns,'path');path.setAttribute('d',d);if(main)path.setAttribute('class','atlas-main-edge');svg.appendChild(path);
+    }
+    connect(active,center,true);
+    testingButtons.querySelectorAll('button').forEach(b=>connect(center,b,b.getAttribute('aria-pressed')==='true'));
+  }
+  let frame;
+  function requestDraw(){cancelAnimationFrame(frame);frame=requestAnimationFrame(drawConnections);}
+  function render(announce=true) {
+    const s=model.view(),chapter=s.chapterNode;
+    ideaButtons.replaceChildren(...data.ideas.map(idea=>button('idea',idea.id,idea.label,idea.id===s.idea)));
+    byId('atlas-passages-label').textContent='Enchiridion · '+s.ideaNode.label;
+    passageButtons.replaceChildren(...s.ideaNode.chapters.map(n=>button('chapter',n,'§'+n,n===s.chapter,'§'+n+' · '+chapterById.get(n).sourceLabel)));
+    byId('atlas-chapter-number').textContent='§'+chapter.n;
+    byId('atlas-chapter-title').textContent=chapter.title;
+    byId('atlas-treatment').textContent={Application:'Professional application',Extension:'Professional extension',Departure:'Deliberate departure'}[chapter.treatment]||chapter.treatment;
+    testingButtons.replaceChildren(...s.testNodes.map(t=>button('test',t.id,t.label,t.id===s.test)));
+    byId('atlas-neighbors').hidden=!s.test;
+    if(s.test){
+      byId('atlas-neighbors-label').textContent=s.related.length?'Other chapters about '+s.testNode.label:'This route currently leads to this chapter only';
+      neighborButtons.replaceChildren(...s.related.map(n=>button('chapter',n,'§'+n,false,'§'+n+' · '+chapterById.get(n).title)));
+    }else neighborButtons.replaceChildren();
+    root.querySelectorAll('[data-action="read"]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.value===s.reading)));
+    byId('atlas-reading-label').textContent=s.reading==='modern'?'§'+chapter.n+' · '+data.edition:'Carter · §'+chapter.n+' · Selected passage';
+    reader.innerHTML=paragraphs(s.reading==='modern'?chapter.text:chapter.source,s.reading==='modern');
+    const credit=byId('atlas-source-credit');credit.hidden=s.reading!=='original';credit.replaceChildren();
+    if(s.reading==='original'){
+      credit.appendChild(document.createTextNode(chapter.sourceCredit));
+      if(chapter.sourceUrl){const a=document.createElement('a');a.href=chapter.sourceUrl;a.target='_blank';a.rel='noopener noreferrer';a.textContent=' Open the historical source';credit.appendChild(a);}
+    }
+    if(announce)byId('atlas-status').textContent=s.ideaNode.label+', section '+chapter.n+', '+chapter.title+(s.test?', related chapters for '+s.testNode.label:'');
+    byId('atlas-chapter-select').value=String(chapter.n);
+    byId('atlas-previous').disabled=chapter.n===1;
+    byId('atlas-next').disabled=chapter.n===52;
+    byId('atlas-permalink').href='#chapter-'+chapter.n+(s.reading==='original'?'-source':'');
+    requestDraw();
+  }
+  root.addEventListener('click',event=>{
+    const b=event.target.closest('button[data-action]');if(!b||!root.contains(b))return;
+    const {action,value}=b.dataset;
+    if(action==='idea')model.selectIdea(value);
+    else if(action==='chapter')model.selectChapter(value);
+    else if(action==='test')model.selectTest(value);
+    else if(action==='read')model.selectReading(value);
+    else return;
+    render();
+    syncHash();
+    const replacement=[...root.querySelectorAll('button[data-action]')].find(next=>next.dataset.action===action&&next.dataset.value===value);
+    if(replacement)replacement.focus({preventScroll:true});
+  });
+  const select=byId('atlas-chapter-select');
+  data.chapters.forEach(c=>{const option=document.createElement('option');option.value=String(c.n);option.textContent='§'+c.n+' · '+c.title;select.appendChild(option);});
+  function syncHash(){
+    const s=model.view(),hash='#chapter-'+s.chapter+(s.reading==='original'?'-source':'');
+    if(location.hash!==hash)history.pushState(null,'',hash);
+  }
+  function loadHash(){
+    const match=location.hash.match(/^#chapter-(\d+)(-source)?$/);
+    if(match&&chapterById.has(Number(match[1]))){model.selectChapter(Number(match[1]));if(match[2])model.selectReading('original');}
+    render(false);
+  }
+  select.addEventListener('change',()=>{model.selectChapter(Number(select.value));render();syncHash();});
+  byId('atlas-previous').addEventListener('click',()=>{if(model.view().chapter>1){model.selectChapter(model.view().chapter-1);render();syncHash();}});
+  byId('atlas-next').addEventListener('click',()=>{if(model.view().chapter<52){model.selectChapter(model.view().chapter+1);render();syncHash();}});
+  window.addEventListener('hashchange',loadHash);
+  loadHash();
+  new ResizeObserver(requestDraw).observe(graph);
+  if(document.fonts)document.fonts.ready.then(requestDraw);
+})();
+</script>

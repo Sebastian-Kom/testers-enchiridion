@@ -1,0 +1,13 @@
+{
+  "title": "The Tester's Handbook",
+  "subtitle": "A handbook for people who are paid to doubt",
+  "author": "Sebastian Komarnicki",
+  "series": "Open Books",
+  "version": "1.03",
+  "edition": "V103",
+  "date": "22 September 2026",
+  "manuscript": "book/testers-enchiridion-V103.md",
+  "sourceRecord": "sources/testers-enchiridion-V103-source-check.md",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+}

@@ -1,0 +1,870 @@
+{
+  "edition": "V103",
+  "ideas": [
+    {
+      "id": "judgment",
+      "label": "Judgment",
+      "chapters": [
+        1,
+        5,
+        6,
+        16,
+        18,
+        20,
+        26,
+        28,
+        38,
+        42,
+        44,
+        45,
+        48
+      ]
+    },
+    {
+      "id": "desire",
+      "label": "Desire",
+      "chapters": [
+        2,
+        8,
+        12,
+        14,
+        15,
+        19,
+        25,
+        34,
+        39
+      ]
+    },
+    {
+      "id": "agency",
+      "label": "Agency",
+      "chapters": [
+        1,
+        9,
+        14,
+        18,
+        19,
+        20,
+        28
+      ]
+    },
+    {
+      "id": "impermanence",
+      "label": "Impermanence",
+      "chapters": [
+        3,
+        7,
+        11,
+        21,
+        26
+      ]
+    },
+    {
+      "id": "roles",
+      "label": "Roles",
+      "chapters": [
+        4,
+        7,
+        17,
+        29,
+        30,
+        37
+      ]
+    },
+    {
+      "id": "character",
+      "label": "Character",
+      "chapters": [
+        6,
+        22,
+        23,
+        24,
+        33,
+        35,
+        40,
+        46,
+        48
+      ]
+    },
+    {
+      "id": "relationships",
+      "label": "Relationships",
+      "chapters": [
+        16,
+        24,
+        26,
+        30,
+        33,
+        36,
+        42,
+        43,
+        46
+      ]
+    },
+    {
+      "id": "practice",
+      "label": "Practice",
+      "chapters": [
+        10,
+        12,
+        13,
+        22,
+        29,
+        33,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52
+      ]
+    },
+    {
+      "id": "attention",
+      "label": "Attention",
+      "chapters": [
+        4,
+        7,
+        13,
+        20,
+        34,
+        38,
+        41
+      ]
+    },
+    {
+      "id": "moderation",
+      "label": "Moderation",
+      "chapters": [
+        15,
+        25,
+        36,
+        39,
+        41,
+        47
+      ]
+    },
+    {
+      "id": "providence",
+      "label": "Providence",
+      "chapters": [
+        8,
+        17,
+        18,
+        27,
+        31,
+        32,
+        52
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "id": "ai-assistance",
+      "label": "AI assistance"
+    },
+    {
+      "id": "accountability",
+      "label": "Accountability"
+    },
+    {
+      "id": "adaptation",
+      "label": "Adaptation"
+    },
+    {
+      "id": "attention",
+      "label": "Attention"
+    },
+    {
+      "id": "blocked-tests",
+      "label": "Blocked tests"
+    },
+    {
+      "id": "collaboration",
+      "label": "Collaboration"
+    },
+    {
+      "id": "communication",
+      "label": "Communication"
+    },
+    {
+      "id": "competence",
+      "label": "Competence"
+    },
+    {
+      "id": "confidentiality",
+      "label": "Confidentiality"
+    },
+    {
+      "id": "confirmation-bias",
+      "label": "Confirmation bias"
+    },
+    {
+      "id": "context",
+      "label": "Context"
+    },
+    {
+      "id": "continuous-improvement",
+      "label": "Continuous improvement"
+    },
+    {
+      "id": "correction",
+      "label": "Correction"
+    },
+    {
+      "id": "decision-authority",
+      "label": "Decision authority"
+    },
+    {
+      "id": "ethical-reasoning",
+      "label": "Ethical reasoning"
+    },
+    {
+      "id": "evidence",
+      "label": "Evidence"
+    },
+    {
+      "id": "functional-safety",
+      "label": "Functional safety"
+    },
+    {
+      "id": "incident-response",
+      "label": "Incident response"
+    },
+    {
+      "id": "independence",
+      "label": "Independence"
+    },
+    {
+      "id": "investigation",
+      "label": "Investigation"
+    },
+    {
+      "id": "knowledge-transfer",
+      "label": "Knowledge transfer"
+    },
+    {
+      "id": "metrics",
+      "label": "Metrics"
+    },
+    {
+      "id": "planning",
+      "label": "Planning"
+    },
+    {
+      "id": "practical-judgment",
+      "label": "Practical judgment"
+    },
+    {
+      "id": "prioritization",
+      "label": "Prioritization"
+    },
+    {
+      "id": "professional-conduct",
+      "label": "Professional conduct"
+    },
+    {
+      "id": "professional-development",
+      "label": "Professional development"
+    },
+    {
+      "id": "proportionality",
+      "label": "Proportionality"
+    },
+    {
+      "id": "reporting",
+      "label": "Reporting"
+    },
+    {
+      "id": "requirements",
+      "label": "Requirements"
+    },
+    {
+      "id": "resilience",
+      "label": "Resilience"
+    },
+    {
+      "id": "resource-allocation",
+      "label": "Resource allocation"
+    },
+    {
+      "id": "reviews",
+      "label": "Reviews"
+    },
+    {
+      "id": "risk",
+      "label": "Risk"
+    },
+    {
+      "id": "role-changes",
+      "label": "Role changes"
+    },
+    {
+      "id": "root-cause-analysis",
+      "label": "Root cause analysis"
+    },
+    {
+      "id": "severity",
+      "label": "Severity"
+    },
+    {
+      "id": "stopping-criteria",
+      "label": "Stopping criteria"
+    },
+    {
+      "id": "sustainable-work",
+      "label": "Sustainable work"
+    },
+    {
+      "id": "test-effectiveness",
+      "label": "Test effectiveness"
+    },
+    {
+      "id": "test-exceptions",
+      "label": "Test exceptions"
+    },
+    {
+      "id": "test-oracles",
+      "label": "Test oracles"
+    },
+    {
+      "id": "test-strategy",
+      "label": "Test strategy"
+    },
+    {
+      "id": "tooling",
+      "label": "Tooling"
+    },
+    {
+      "id": "traceability",
+      "label": "Traceability"
+    },
+    {
+      "id": "training",
+      "label": "Training"
+    }
+  ],
+  "chapters": [
+    {
+      "n": 1,
+      "sourceLabel": "What is up to us",
+      "treatment": "Extension",
+      "tests": [
+        "evidence",
+        "decision-authority",
+        "reporting"
+      ]
+    },
+    {
+      "n": 2,
+      "sourceLabel": "Desire and aversion",
+      "treatment": "Application",
+      "tests": [
+        "evidence",
+        "confirmation-bias",
+        "test-oracles"
+      ]
+    },
+    {
+      "n": 3,
+      "sourceLabel": "The breakable cup",
+      "treatment": "Extension",
+      "tests": [
+        "tooling",
+        "knowledge-transfer",
+        "resilience"
+      ]
+    },
+    {
+      "n": 4,
+      "sourceLabel": "Before the bath",
+      "treatment": "Application",
+      "tests": [
+        "reviews",
+        "communication",
+        "decision-authority"
+      ]
+    },
+    {
+      "n": 5,
+      "sourceLabel": "Judgment and blame",
+      "treatment": "Extension",
+      "tests": [
+        "evidence",
+        "requirements",
+        "accountability"
+      ]
+    },
+    {
+      "n": 6,
+      "sourceLabel": "The handsome horse",
+      "treatment": "Application",
+      "tests": [
+        "tooling",
+        "ai-assistance",
+        "test-effectiveness"
+      ]
+    },
+    {
+      "n": 7,
+      "sourceLabel": "The captain’s call",
+      "treatment": "Extension",
+      "tests": [
+        "prioritization",
+        "resource-allocation",
+        "sustainable-work"
+      ]
+    },
+    {
+      "n": 8,
+      "sourceLabel": "What happens",
+      "treatment": "Extension",
+      "tests": [
+        "evidence",
+        "functional-safety",
+        "investigation"
+      ]
+    },
+    {
+      "n": 9,
+      "sourceLabel": "An obstacle to the body",
+      "treatment": "Departure",
+      "tests": [
+        "blocked-tests",
+        "prioritization",
+        "reporting"
+      ]
+    },
+    {
+      "n": 10,
+      "sourceLabel": "Use your faculties",
+      "treatment": "Application",
+      "tests": [
+        "professional-conduct",
+        "communication",
+        "context"
+      ]
+    },
+    {
+      "n": 11,
+      "sourceLabel": "What is returned",
+      "treatment": "Extension",
+      "tests": [
+        "knowledge-transfer",
+        "traceability",
+        "accountability"
+      ]
+    },
+    {
+      "n": 12,
+      "sourceLabel": "Begin with little things",
+      "treatment": "Extension",
+      "tests": [
+        "risk",
+        "prioritization",
+        "proportionality"
+      ]
+    },
+    {
+      "n": 13,
+      "sourceLabel": "Being thought foolish",
+      "treatment": "Application",
+      "tests": [
+        "requirements",
+        "traceability",
+        "ai-assistance"
+      ]
+    },
+    {
+      "n": 14,
+      "sourceLabel": "The power of approval",
+      "treatment": "Extension",
+      "tests": [
+        "reporting",
+        "independence",
+        "decision-authority"
+      ]
+    },
+    {
+      "n": 15,
+      "sourceLabel": "The banquet",
+      "treatment": "Application",
+      "tests": [
+        "resource-allocation",
+        "prioritization",
+        "professional-development"
+      ]
+    },
+    {
+      "n": 16,
+      "sourceLabel": "Another person’s grief",
+      "treatment": "Departure",
+      "tests": [
+        "collaboration",
+        "incident-response",
+        "communication"
+      ]
+    },
+    {
+      "n": 17,
+      "sourceLabel": "The actor and the role",
+      "treatment": "Extension",
+      "tests": [
+        "role-changes",
+        "ai-assistance",
+        "competence"
+      ]
+    },
+    {
+      "n": 18,
+      "sourceLabel": "The raven’s omen",
+      "treatment": "Extension",
+      "tests": [
+        "accountability",
+        "professional-conduct",
+        "risk"
+      ]
+    },
+    {
+      "n": 19,
+      "sourceLabel": "Choosing the contest",
+      "treatment": "Departure",
+      "tests": [
+        "evidence",
+        "collaboration",
+        "accountability"
+      ]
+    },
+    {
+      "n": 20,
+      "sourceLabel": "Gain time and respite",
+      "treatment": "Extension",
+      "tests": [
+        "communication",
+        "reviews",
+        "professional-conduct"
+      ]
+    },
+    {
+      "n": 21,
+      "sourceLabel": "Remember death",
+      "treatment": "Extension",
+      "tests": [
+        "functional-safety",
+        "risk",
+        "prioritization"
+      ]
+    },
+    {
+      "n": 22,
+      "sourceLabel": "Ridicule and resolve",
+      "treatment": "Extension",
+      "tests": [
+        "professional-conduct",
+        "reviews",
+        "independence"
+      ]
+    },
+    {
+      "n": 23,
+      "sourceLabel": "Being a philosopher",
+      "treatment": "Application",
+      "tests": [
+        "professional-conduct",
+        "reporting",
+        "accountability"
+      ]
+    },
+    {
+      "n": 24,
+      "sourceLabel": "Fidelity and honor",
+      "treatment": "Application",
+      "tests": [
+        "reporting",
+        "evidence",
+        "collaboration"
+      ]
+    },
+    {
+      "n": 25,
+      "sourceLabel": "The price of lettuce",
+      "treatment": "Extension",
+      "tests": [
+        "decision-authority",
+        "communication",
+        "professional-conduct"
+      ]
+    },
+    {
+      "n": 26,
+      "sourceLabel": "Your cup and another’s",
+      "treatment": "Application",
+      "tests": [
+        "severity",
+        "evidence",
+        "independence"
+      ]
+    },
+    {
+      "n": 27,
+      "sourceLabel": "The target",
+      "treatment": "Departure",
+      "tests": [
+        "requirements",
+        "root-cause-analysis",
+        "correction"
+      ]
+    },
+    {
+      "n": 28,
+      "sourceLabel": "Surrendering the mind",
+      "treatment": "Extension",
+      "tests": [
+        "independence",
+        "ai-assistance",
+        "test-oracles"
+      ]
+    },
+    {
+      "n": 29,
+      "sourceLabel": "Before the Olympics",
+      "treatment": "Application",
+      "tests": [
+        "ai-assistance",
+        "planning",
+        "competence"
+      ]
+    },
+    {
+      "n": 30,
+      "sourceLabel": "Duties and relations",
+      "treatment": "Departure",
+      "tests": [
+        "accountability",
+        "decision-authority",
+        "reporting"
+      ]
+    },
+    {
+      "n": 31,
+      "sourceLabel": "Piety and providence",
+      "treatment": "Departure",
+      "tests": [
+        "investigation",
+        "risk",
+        "adaptation"
+      ]
+    },
+    {
+      "n": 32,
+      "sourceLabel": "Consulting the oracle",
+      "treatment": "Departure",
+      "tests": [
+        "ai-assistance",
+        "ethical-reasoning",
+        "accountability"
+      ]
+    },
+    {
+      "n": 33,
+      "sourceLabel": "Everyday conduct",
+      "treatment": "Departure",
+      "tests": [
+        "professional-conduct",
+        "communication",
+        "confidentiality"
+      ]
+    },
+    {
+      "n": 34,
+      "sourceLabel": "Delay before pleasure",
+      "treatment": "Application",
+      "tests": [
+        "test-exceptions",
+        "traceability",
+        "risk"
+      ]
+    },
+    {
+      "n": 35,
+      "sourceLabel": "Right action and censure",
+      "treatment": "Application",
+      "tests": [
+        "reporting",
+        "decision-authority",
+        "evidence"
+      ]
+    },
+    {
+      "n": 36,
+      "sourceLabel": "The largest helping",
+      "treatment": "Extension",
+      "tests": [
+        "resource-allocation",
+        "prioritization",
+        "collaboration"
+      ]
+    },
+    {
+      "n": 37,
+      "sourceLabel": "A role beyond your strength",
+      "treatment": "Extension",
+      "tests": [
+        "competence",
+        "planning",
+        "professional-development"
+      ]
+    },
+    {
+      "n": 38,
+      "sourceLabel": "Guard the ruling faculty",
+      "treatment": "Extension",
+      "tests": [
+        "reviews",
+        "independence",
+        "confirmation-bias"
+      ]
+    },
+    {
+      "n": 39,
+      "sourceLabel": "The shoe that fits",
+      "treatment": "Extension",
+      "tests": [
+        "test-strategy",
+        "evidence",
+        "stopping-criteria"
+      ]
+    },
+    {
+      "n": 40,
+      "sourceLabel": "Valuation and adornment",
+      "treatment": "Departure",
+      "tests": [
+        "test-effectiveness",
+        "confirmation-bias",
+        "test-oracles"
+      ]
+    },
+    {
+      "n": 41,
+      "sourceLabel": "Care for understanding",
+      "treatment": "Departure",
+      "tests": [
+        "sustainable-work",
+        "attention",
+        "reviews"
+      ]
+    },
+    {
+      "n": 42,
+      "sourceLabel": "It seemed so to him",
+      "treatment": "Extension",
+      "tests": [
+        "requirements",
+        "context",
+        "collaboration"
+      ]
+    },
+    {
+      "n": 43,
+      "sourceLabel": "The two handles",
+      "treatment": "Application",
+      "tests": [
+        "communication",
+        "collaboration",
+        "decision-authority"
+      ]
+    },
+    {
+      "n": 44,
+      "sourceLabel": "An invalid inference",
+      "treatment": "Application",
+      "tests": [
+        "test-effectiveness",
+        "metrics",
+        "ai-assistance"
+      ]
+    },
+    {
+      "n": 45,
+      "sourceLabel": "The hurried bath",
+      "treatment": "Extension",
+      "tests": [
+        "evidence",
+        "reporting",
+        "context"
+      ]
+    },
+    {
+      "n": 46,
+      "sourceLabel": "Socrates and being overlooked",
+      "treatment": "Application",
+      "tests": [
+        "collaboration",
+        "professional-conduct",
+        "knowledge-transfer"
+      ]
+    },
+    {
+      "n": 47,
+      "sourceLabel": "Practice without display",
+      "treatment": "Extension",
+      "tests": [
+        "training",
+        "sustainable-work",
+        "incident-response"
+      ]
+    },
+    {
+      "n": 48,
+      "sourceLabel": "Signs of progress",
+      "treatment": "Extension",
+      "tests": [
+        "reviews",
+        "evidence",
+        "continuous-improvement"
+      ]
+    },
+    {
+      "n": 49,
+      "sourceLabel": "Interpreting Chrysippus",
+      "treatment": "Application",
+      "tests": [
+        "requirements",
+        "traceability",
+        "evidence"
+      ]
+    },
+    {
+      "n": 50,
+      "sourceLabel": "The contest is now",
+      "treatment": "Extension",
+      "tests": [
+        "continuous-improvement",
+        "accountability",
+        "professional-conduct"
+      ]
+    },
+    {
+      "n": 51,
+      "sourceLabel": "Three topics of philosophy",
+      "treatment": "Application",
+      "tests": [
+        "reporting",
+        "accountability",
+        "practical-judgment"
+      ]
+    },
+    {
+      "n": 52,
+      "sourceLabel": "Maxims at hand",
+      "treatment": "Extension",
+      "tests": [
+        "evidence",
+        "accountability",
+        "practical-judgment"
+      ]
+    }
+  ]
+}
