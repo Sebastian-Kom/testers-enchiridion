@@ -1,5 +1,9 @@
 # The Tester's Handbook
 
+## [→ Open the interactive map](https://sebastian-kom.github.io/testers-enchiridion/index.html)
+
+[Read the book online](https://sebastian-kom.github.io/testers-enchiridion/book.html) · [Download the PDF](https://sebastian-kom.github.io/testers-enchiridion/downloads/testers-enchiridion-V103.pdf)
+
 *A handbook for people who are paid to doubt*
 
 **Sebastian Komarnicki · Open Books · V103**
