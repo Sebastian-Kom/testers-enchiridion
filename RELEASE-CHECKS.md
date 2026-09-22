@@ -13,10 +13,18 @@ Prepared 22 September 2026.
 - The PDF contains the complete chapter text and 52 chapter bookmarks. All 35 pages were rendered and visually reviewed; contents, text boundaries, and page numbering were checked.
 - The source record, full CC BY-SA 4.0 legal code, and attribution notice are included.
 
-## To complete on GitHub Pages
+## Hosted checks completed on 22 September 2026
 
-- Confirm the Pages deployment and actual site address.
-- Review desktop and mobile layout, keyboard interaction, direct chapter links, and browser Back behavior.
+- GitHub Pages deployment succeeded at https://sebastian-kom.github.io/testers-enchiridion/.
+- All 25 uploaded publication files matched the prepared package byte for byte. The three omitted configuration files were restored in a follow-up commit.
+- The live map, web reader, source page, and PDF returned HTTP 200 and matched the prepared files byte for byte.
+- Desktop layout was visually inspected in the hosted browser.
+- Tested Judgment → §18 and Character → §46, switching to the Carter passage, Collaboration → related chapters, Next, browser Back, reload of a direct chapter link, keyboard activation of a related chapter, the chapter selector, and the disabled Next control at §52.
+- Confirmed the revised raven and Socrates chapters are displayed. The reader opens from the map's navigation.
+
+## Remaining review
+
+- Review the layout and interactions on mobile and complete a broader keyboard and accessibility review.
 - Review the meaning of the concept connections, especially §§18 and 46, and record any changes as issues.
 
-See PUBLISHING.md for the deployment steps and specific review routes. These notes record package checks; they do not claim a hosted-browser review has already happened.
+See PUBLISHING.md for the deployment steps and specific review routes. Hosted checks cover the interactions listed above; they are not a complete browser or accessibility audit.

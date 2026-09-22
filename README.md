@@ -10,10 +10,11 @@ The interactive map connects Epictetus's ideas to sections of the *Enchiridion*,
 
 ## Read and explore
 
+- [Explore the interactive map](https://sebastian-kom.github.io/testers-enchiridion/index.html).
+- [Read the book online](https://sebastian-kom.github.io/testers-enchiridion/book.html).
 - [Read the Markdown manuscript](book/testers-enchiridion-V103.md).
 - [Download the PDF](docs/downloads/testers-enchiridion-V103.pdf).
 - [Read the source-check record](sources/testers-enchiridion-V103-source-check.md).
-- **Interactive map and web reader:** enable GitHub Pages as described in [PUBLISHING.md](PUBLISHING.md), then open the site's address shown in the repository's Pages settings. GitHub's normal file view displays HTML source rather than running the map.
 
 The complete website is already built in `docs/`. It works on GitHub Pages and can also be opened locally at `docs/index.html`. There is no account requirement, analytics service, external JavaScript library, or network dependency for the map itself. Source links and the online license page require a connection.
 
