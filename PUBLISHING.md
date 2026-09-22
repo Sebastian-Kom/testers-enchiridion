@@ -2,7 +2,7 @@
 
 Suggested repository name: **testers-enchiridion**.
 
-Suggested description: **An Open Book for software and systems testers: 52 chapters inspired by Epictetus, with an interactive concept map. CC BY-SA 4.0.**
+Suggested description: **A handbook for software and systems testers: 52 chapters inspired by Epictetus, with an interactive concept map. CC BY-SA 4.0.**
 
 All publication files are included. The website is already built in `docs/`; GitHub Pages does not need Python, ReportLab, npm, or a custom build workflow.
 

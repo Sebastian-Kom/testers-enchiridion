@@ -6,7 +6,7 @@
 
 *A handbook for people who are paid to doubt*
 
-**Sebastian Komarnicki · Open Books · V103**
+**Sebastian Komarnicki · V103**
 
 A modern adaptation of Epictetus for software and systems testers: 52 short chapters about judgment, evidence, responsibility, and professional conduct. The book keeps the directness and playfulness of a handbook, with selected sentences from Elizabeth Carter's historical translation woven into the modern text.
 
@@ -33,9 +33,9 @@ The chapter selector and Previous/Next controls also provide access to all 52 ch
 
 The Carter view contains **selected checked passages**, not a complete transcription of the original work. Chapter 40 is explicitly marked as a deliberate departure without a retained quotation. Chapter 29 follows the historical edition's cross-reference to *Discourses* III.15.
 
-## Open Books and reuse
+## Sharing and reuse
 
-Open Books brings older works into conversation with contemporary practice and makes the resulting books available to read, share, question, and adapt. This repository provides the text, its sources, the concept map, and the tools used to publish them.
+This book brings Epictetus into conversation with contemporary practice and is available to read, share, question, and adapt. This repository provides the text, its sources, the concept map, and the tools used to publish them.
 
 The original modern material in this repository, including the book, map, data, documentation, and original code, is licensed under **[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)**. Credit the author, indicate changes, and share adaptations under the same or a compatible license. Commercial reuse is permitted. See [LICENSE](LICENSE) for the full terms and [NOTICE.md](NOTICE.md) for attribution and scope.
 

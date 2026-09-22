@@ -1,5 +1,10 @@
 # Change log
 
+## V103 publication update — 22 September 2026
+
+- Removed the provisional series label from the website, manuscript, PDF, project metadata, and publishing documentation.
+- Rebuilt the website and PDF. The 52 chapters and CC BY-SA 4.0 licence are unchanged.
+
 ## V103 publication package — 22 September 2026
 
 - Preserved all reviewed V103 chapter text and its separate source-check record. Added author and license notices to the manuscript's publication copy.

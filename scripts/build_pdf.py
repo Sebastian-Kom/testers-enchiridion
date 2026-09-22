@@ -35,8 +35,6 @@ def page(canvas,doc):
     canvas.saveState()
     if doc.page==1:
         canvas.setFillColor(INK);canvas.rect(0,0,WIDTH,HEIGHT,fill=1,stroke=0)
-        canvas.setFillColor(colors.HexColor('#CDD8CC'));canvas.setFont('Helvetica',9)
-        canvas.drawString(42,HEIGHT-61,'O P E N   B O O K S')
         canvas.setStrokeColor(GOLD);canvas.setLineWidth(1);canvas.line(42,HEIGHT-91,WIDTH-42,HEIGHT-91)
         canvas.setFillColor(colors.HexColor('#FAF7EC'))
         canvas.setFont('Times-Roman',40);canvas.drawString(40,HEIGHT-183,'The Tester’s')
@@ -73,7 +71,7 @@ def build():
     for p in [
         'Fifty-two short chapters bring the questions of Epictetus into the working life of a software and systems tester: what to trust, what to question, and how to act.',
         'The modern adaptation is by Sebastian Komarnicki. Its historical passages follow Elizabeth Carter’s 1759 edition. Their spelling and capitalization are retained; deliberate adaptations are documented in the accompanying source record.',
-        'This is an Open Book. You may share it, adapt it, and use it commercially under Creative Commons Attribution-ShareAlike 4.0 International. Credit the author, indicate changes, and share adaptations under the same or a compatible license.',
+        'You may share this book, adapt it, and use it commercially under Creative Commons Attribution-ShareAlike 4.0 International. Credit the author, indicate changes, and share adaptations under the same or a compatible license.',
     ]: story.append(Paragraph(inline(p),intro))
     story.extend([Spacer(1,15),Paragraph('© 2026 Sebastian Komarnicki<br/>Version 1.03 · 22 September 2026',small),
         Paragraph('License: <link href="https://creativecommons.org/licenses/by-sa/4.0/" color="#294B3A">creativecommons.org/licenses/by-sa/4.0/</link><br/>Carter’s historical text is identified separately and remains public domain. See the accompanying NOTICE.md and source record for attribution details.',small),PageBreak(),Paragraph('Contents',section)])

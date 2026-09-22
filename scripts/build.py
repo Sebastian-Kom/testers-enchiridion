@@ -78,10 +78,10 @@ nav{display:flex;gap:22px;flex-wrap:wrap;font-size:14px}main{max-width:1220px;ma
 def shell(title, content):
     return f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{html.escape(title)} | Open Books</title>
+<title>{html.escape(title)} | Sebastian Komarnicki</title>
 <meta name="description" content="The Tester’s Handbook by Sebastian Komarnicki: 52 short chapters, an interactive map, and a PDF. A modern adaptation of Epictetus. CC BY-SA 4.0.">
 <meta name="author" content="Sebastian Komarnicki"><meta name="color-scheme" content="light"><style>{STYLE}</style></head>
-<body><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="index.html">OPEN BOOKS<span>The Tester’s Handbook</span></a><nav aria-label="Main navigation"><a href="index.html">Map</a><a href="book.html">Read</a><a href="sources.html">Sources</a><a href="downloads/testers-enchiridion-V103.pdf">PDF</a></nav></header>
+<body><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="index.html">SEBASTIAN KOMARNICKI<span>The Tester’s Handbook</span></a><nav aria-label="Main navigation"><a href="index.html">Map</a><a href="book.html">Read</a><a href="sources.html">Sources</a><a href="downloads/testers-enchiridion-V103.pdf">PDF</a></nav></header>
 <main id="main">{content}</main>
 <footer class="site-footer">© 2026 Sebastian Komarnicki · {PROJECT['edition']} · <a rel="license" href="{PROJECT['licenseUrl']}">CC BY-SA 4.0</a> · <a href="downloads/NOTICE.md">Attribution and reuse</a><br>Carter’s historical text is identified separately in the source record.</footer></body></html>'''
 
@@ -110,7 +110,7 @@ def build():
     fragment='<noscript><p class="noscript">The map needs JavaScript. You can still <a href="book.html">read the complete book</a> or download the PDF.</p></noscript>'+fragment
     (DOCS/'index.html').write_text(shell('An atlas of ideas',fragment),encoding='utf-8')
     toc='<details><summary>All 52 chapters</summary><ol>'+''.join(f'<li><a href="#chapter-{c["n"]}">{html.escape(c["title"])}</a></li>' for c in canon)+'</ol></details>'
-    content=f'<div class="book"><p class="meta">OPEN BOOKS · {PROJECT["edition"]}</p><h1>{html.escape(PROJECT["title"])}</h1><p class="subtitle">{PROJECT["subtitle"]}</p><p class="meta">{PROJECT["author"]}<br>{PROJECT["date"]} · <a href="downloads/testers-enchiridion-V103.md">Download Markdown</a></p>'+toc
+    content=f'<div class="book"><p class="meta">{PROJECT["edition"]}</p><h1>{html.escape(PROJECT["title"])}</h1><p class="subtitle">{PROJECT["subtitle"]}</p><p class="meta">{PROJECT["author"]}<br>{PROJECT["date"]} · <a href="downloads/testers-enchiridion-V103.md">Download Markdown</a></p>'+toc
     content+='\n'.join(f'<section class="chapter" id="chapter-{c["n"]}"><h2>{c["n"]}. {html.escape(c["title"])}</h2>{markdown(c["text"])}<p class="map-link"><a href="index.html#chapter-{c["n"]}">Explore this chapter in the map →</a></p></section>' for c in canon)
     content+='<p class="meta">Source: Epictetus, translated by Elizabeth Carter (Dublin, 1759). <a href="sources.html">Read the source record and quotation exceptions</a>.</p></div>'
     (DOCS/'book.html').write_text(shell(PROJECT['title'],content),encoding='utf-8')

@@ -4,7 +4,7 @@
 
 A modern adaptation of Epictetus for software and systems testers.
 
-Sebastian Komarnicki · Open Books
+Sebastian Komarnicki
 
 Version 1.03  
 22 September 2026
