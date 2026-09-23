@@ -72,7 +72,7 @@ Then visit `http://localhost:8000`. The initial package includes the PDF and gen
 
 The PDF uses standard PDF fonts. It adds a cover, contents, publication information, and source attribution around the 52 chapters. Typographic dashes are normalized for PDF output; chapter wording follows V103.
 
-In the PDF, passages drawn from Carter's translation are italicized. A reading note before chapter 1 explains the historical language and points to the documented adaptations.
+In the PDF, passages drawn from Carter's translation are italicized. A footnote linked to the first Carter passage explains the historical language and points to the documented adaptations.
 
 ## Review and contributions
 

@@ -8,7 +8,7 @@ from reportlab.lib import colors
 from reportlab.lib.enums import TA_LEFT
 from reportlab.lib.pagesizes import A5
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
-from reportlab.platypus import BaseDocTemplate, Frame, PageTemplate, Paragraph, Spacer, PageBreak, KeepTogether, TableStyle
+from reportlab.platypus import BaseDocTemplate, Frame, PageTemplate, Paragraph, Spacer, PageBreak, NextPageTemplate, KeepTogether, TableStyle
 from reportlab.platypus.tableofcontents import TableOfContents
 
 from build import ROOT, PROJECT, chapters
@@ -23,7 +23,7 @@ def inline(text):
     text=re.sub(r'\*\*(.+?)\*\*',r'<b>\1</b>',text)
     return text
 
-def chapter_inline(text, retained):
+def chapter_inline(text, retained, note_quote=None):
     """Italicize only the checked source passages, including documented adaptations."""
     text=' '.join(text.splitlines())
     if not retained:
@@ -33,6 +33,8 @@ def chapter_inline(text, retained):
     position=0
     for match in pattern.finditer(text):
         parts.extend([inline(text[position:match.start()]),'<i>'+inline(match[0])+'</i>'])
+        if match[0]==note_quote:
+            parts.append('<super><link href="#carter-note">1</link></super>')
         position=match.end()
     parts.append(inline(text[position:]))
     return ''.join(parts)
@@ -69,6 +71,15 @@ def page(canvas,doc):
         canvas.drawRightString(WIDTH-40,23,str(doc.page))
     canvas.restoreState()
 
+def first_chapter_page(canvas,doc):
+    page(canvas,doc)
+    canvas.saveState()
+    canvas.setStrokeColor(MUTED);canvas.setLineWidth(.35)
+    rule_y=doc.bottomMargin+doc.source_note_height+7
+    canvas.line(doc.leftMargin,rule_y,doc.leftMargin+55,rule_y)
+    doc.source_note.drawOn(canvas,doc.leftMargin,doc.bottomMargin)
+    canvas.restoreState()
+
 def build():
     target=ROOT/'docs/downloads/testers-enchiridion-V103.pdf'
     target.parent.mkdir(exist_ok=True,parents=True)
@@ -76,11 +87,18 @@ def build():
         title=PROJECT['title'],author=PROJECT['author'],subject='A modern adaptation of Epictetus for software and systems testers. CC BY-SA 4.0.',
         pageCompression=1)
     frame=Frame(doc.leftMargin,doc.bottomMargin,doc.width,doc.height,leftPadding=0,rightPadding=0,topPadding=0,bottomPadding=0)
-    doc.addPageTemplates(PageTemplate(id='book',frames=frame,onPage=page))
+    footnote=ParagraphStyle('Footnote',fontName='Times-Roman',fontSize=8.2,leading=10.5,textColor=INK)
+    doc.source_note=Paragraph('<a name="carter-note"/><super>1</super> Passages in italics come from Elizabeth Carter’s 1759 translation of Epictetus. Their historical language is retained; a few deliberate adaptations are documented in the source record.',footnote)
+    _,doc.source_note_height=doc.source_note.wrap(doc.width,doc.height)
+    note_space=doc.source_note_height+20
+    first_frame=Frame(doc.leftMargin,doc.bottomMargin+note_space,doc.width,doc.height-note_space,leftPadding=0,rightPadding=0,topPadding=0,bottomPadding=0)
+    doc.addPageTemplates([
+        PageTemplate(id='book',frames=frame,onPage=page),
+        PageTemplate(id='first-chapter',frames=first_frame,onPage=first_chapter_page,autoNextPageTemplate='book'),
+    ])
     body=ParagraphStyle('Body',fontName='Times-Roman',fontSize=10.5,leading=14.8,textColor=INK,spaceAfter=7,allowWidows=0,allowOrphans=0)
     heading=ParagraphStyle('Chapter',fontName='Times-Roman',fontSize=17,leading=20.5,textColor=INK,spaceBefore=0,spaceAfter=13,keepWithNext=True)
     small=ParagraphStyle('Small',fontName='Helvetica',fontSize=8.3,leading=12,textColor=MUTED,spaceAfter=12)
-    reading_note=ParagraphStyle('ReadingNote',fontName='Helvetica',fontSize=9,leading=12.5,textColor=INK,spaceAfter=22,keepWithNext=True)
     intro=ParagraphStyle('Intro',parent=body,fontSize=11,leading=16,spaceAfter=12)
     section=ParagraphStyle('Section',parent=heading,fontSize=23,leading=27,spaceAfter=24)
     story=[Spacer(1,400),PageBreak(),Paragraph('About this edition',section)]
@@ -95,7 +113,7 @@ def build():
     toc.levelStyles=[ParagraphStyle('ContentsEntry',fontName='Times-Roman',fontSize=9.8,leading=13.5,firstLineIndent=0,leftIndent=0,rightIndent=22,spaceBefore=2,textColor=INK)]
     toc.tableStyle=TableStyle([('TOPPADDING',(0,0),(-1,-1),0),('BOTTOMPADDING',(0,0),(-1,-1),0),('LEFTPADDING',(0,0),(-1,-1),0),('RIGHTPADDING',(0,0),(-1,-1),0),('VALIGN',(0,0),(-1,-1),'TOP')])
     toc.dotsMinLevel=0
-    story.extend([toc,PageBreak()])
+    story.extend([toc,NextPageTemplate('first-chapter'),PageBreak()])
     source=json.loads((ROOT/'sources/carter-1759-passages.json').read_text(encoding='utf-8'))
     retained_by_chapter={entry['n']:entry['retained'] for entry in source['chapters']}
     for chapter in chapters():
@@ -107,11 +125,9 @@ def build():
             count=sum(' '.join(p.splitlines()).count(quotation) for p in raw_paragraphs)
             if count!=1:
                 raise ValueError(f"Expected one source passage in chapter {chapter['n']}, found {count}: {quotation}")
-        paragraphs=[Paragraph(chapter_inline(p,retained),body) for p in raw_paragraphs]
-        lead=[]
-        if chapter['n']==1:
-            lead=[Paragraph('Passages in italics come from Elizabeth Carter’s 1759 translation of Epictetus. Their historical language is retained; a few deliberate adaptations are documented in the source record.',reading_note)]
-        story.append(KeepTogether([*lead,h,*paragraphs,Spacer(1,16)]))
+        note_quote=retained[0] if chapter['n']==1 else None
+        paragraphs=[Paragraph(chapter_inline(p,retained,note_quote),body) for p in raw_paragraphs]
+        story.append(KeepTogether([h,*paragraphs,Spacer(1,16)]))
     story.extend([PageBreak(),Paragraph('Source and license',section),
         Paragraph('Epictetus, <i>All the Works of Epictetus, Which Are Now Extant</i>, translated by Elizabeth Carter (Dublin: Hulton Bradley, 1759). <i>The Enchiridion</i>, pp. 387-412. The passage in §29 follows <i>Discourses</i> III.15, p. 236, as directed by the note on p. 399.',intro),
         Paragraph('The retained passages were checked against scans of the printed edition. The source record lists each passage and documents the excerpt in §7, the adaptations in §§18 and 23, the omission in §40, and the closing formula in §52.',intro),

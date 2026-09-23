@@ -1,5 +1,10 @@
 # Change log
 
+## V103 PDF footnote update — 23 September 2026
+
+- Moved the reading note to a small footnote at the bottom of chapter 1's opening page, linked from a superscript after the first Carter passage.
+- Kept Carter passages italicized and preserved the chapter wording.
+
 ## V103 PDF typography update — 23 September 2026
 
 - Set the 52 passages drawn from Carter's translation in italics, using the checked source record, including its documented adaptations.

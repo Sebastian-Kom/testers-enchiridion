@@ -26,6 +26,10 @@ Prepared 22 September 2026.
 
 All 52 intended source passages render in italics in the same text color. The reading note appears on page 5 with chapter 1, chapter text is unchanged, and all 35 pages were rendered and visually reviewed. The 52 chapter bookmarks are retained.
 
+## PDF footnote checks — 23 September 2026
+
+The reading note now sits at the bottom of page 5, linked from a superscript after the first Carter passage. The revised page was rendered and visually reviewed. All other pages render identically to the previous PDF; chapter wording, italics, the 35-page count, and all 52 bookmark positions are unchanged. The footnote link stays on page 5, and the publication checks pass.
+
 ## Remaining review
 
 - Review the layout and interactions on mobile and complete a broader keyboard and accessibility review.
