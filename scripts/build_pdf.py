@@ -1,6 +1,7 @@
 """Build the A5 PDF from the unchanged V103 manuscript. Requires ReportLab."""
 from pathlib import Path
 import html
+import json
 import re
 
 from reportlab.lib import colors
@@ -21,6 +22,20 @@ def inline(text):
     text=html.escape(text.replace('—',' - ').replace('–','-').replace('\u2011','-'),quote=False)
     text=re.sub(r'\*\*(.+?)\*\*',r'<b>\1</b>',text)
     return text
+
+def chapter_inline(text, retained):
+    """Italicize only the checked source passages, including documented adaptations."""
+    text=' '.join(text.splitlines())
+    if not retained:
+        return inline(text)
+    pattern=re.compile('|'.join(re.escape(q) for q in sorted(retained,key=len,reverse=True)))
+    parts=[]
+    position=0
+    for match in pattern.finditer(text):
+        parts.extend([inline(text[position:match.start()]),'<i>'+inline(match[0])+'</i>'])
+        position=match.end()
+    parts.append(inline(text[position:]))
+    return ''.join(parts)
 
 class BookDoc(BaseDocTemplate):
     def afterFlowable(self,flowable):
@@ -65,6 +80,7 @@ def build():
     body=ParagraphStyle('Body',fontName='Times-Roman',fontSize=10.5,leading=14.8,textColor=INK,spaceAfter=7,allowWidows=0,allowOrphans=0)
     heading=ParagraphStyle('Chapter',fontName='Times-Roman',fontSize=17,leading=20.5,textColor=INK,spaceBefore=0,spaceAfter=13,keepWithNext=True)
     small=ParagraphStyle('Small',fontName='Helvetica',fontSize=8.3,leading=12,textColor=MUTED,spaceAfter=12)
+    reading_note=ParagraphStyle('ReadingNote',fontName='Helvetica',fontSize=9,leading=12.5,textColor=INK,spaceAfter=22,keepWithNext=True)
     intro=ParagraphStyle('Intro',parent=body,fontSize=11,leading=16,spaceAfter=12)
     section=ParagraphStyle('Section',parent=heading,fontSize=23,leading=27,spaceAfter=24)
     story=[Spacer(1,400),PageBreak(),Paragraph('About this edition',section)]
@@ -80,11 +96,22 @@ def build():
     toc.tableStyle=TableStyle([('TOPPADDING',(0,0),(-1,-1),0),('BOTTOMPADDING',(0,0),(-1,-1),0),('LEFTPADDING',(0,0),(-1,-1),0),('RIGHTPADDING',(0,0),(-1,-1),0),('VALIGN',(0,0),(-1,-1),'TOP')])
     toc.dotsMinLevel=0
     story.extend([toc,PageBreak()])
+    source=json.loads((ROOT/'sources/carter-1759-passages.json').read_text(encoding='utf-8'))
+    retained_by_chapter={entry['n']:entry['retained'] for entry in source['chapters']}
     for chapter in chapters():
         h=Paragraph(inline(f"{chapter['n']}. {chapter['title']}"),heading)
         h.chapter_number=chapter['n'];h.toc_title=f"{chapter['n']}. {chapter['title']}"
-        paragraphs=[Paragraph(inline(' '.join(p.splitlines())),body) for p in re.split(r'\n\s*\n',chapter['text'])]
-        story.append(KeepTogether([h,*paragraphs,Spacer(1,16)]))
+        retained=retained_by_chapter[chapter['n']]
+        raw_paragraphs=re.split(r'\n\s*\n',chapter['text'])
+        for quotation in retained:
+            count=sum(' '.join(p.splitlines()).count(quotation) for p in raw_paragraphs)
+            if count!=1:
+                raise ValueError(f"Expected one source passage in chapter {chapter['n']}, found {count}: {quotation}")
+        paragraphs=[Paragraph(chapter_inline(p,retained),body) for p in raw_paragraphs]
+        lead=[]
+        if chapter['n']==1:
+            lead=[Paragraph('Passages in italics come from Elizabeth Carter’s 1759 translation of Epictetus. Their historical language is retained; a few deliberate adaptations are documented in the source record.',reading_note)]
+        story.append(KeepTogether([*lead,h,*paragraphs,Spacer(1,16)]))
     story.extend([PageBreak(),Paragraph('Source and license',section),
         Paragraph('Epictetus, <i>All the Works of Epictetus, Which Are Now Extant</i>, translated by Elizabeth Carter (Dublin: Hulton Bradley, 1759). <i>The Enchiridion</i>, pp. 387-412. The passage in §29 follows <i>Discourses</i> III.15, p. 236, as directed by the note on p. 399.',intro),
         Paragraph('The retained passages were checked against scans of the printed edition. The source record lists each passage and documents the excerpt in §7, the adaptations in §§18 and 23, the omission in §40, and the closing formula in §52.',intro),

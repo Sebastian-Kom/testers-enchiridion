@@ -22,6 +22,10 @@ Prepared 22 September 2026.
 - Tested Judgment → §18 and Character → §46, switching to the Carter passage, Collaboration → related chapters, Next, browser Back, reload of a direct chapter link, keyboard activation of a related chapter, the chapter selector, and the disabled Next control at §52.
 - Confirmed the revised raven and Socrates chapters are displayed. The reader opens from the map's navigation.
 
+## PDF typography checks — 23 September 2026
+
+All 52 intended source passages render in italics in the same text color. The reading note appears on page 5 with chapter 1, chapter text is unchanged, and all 35 pages were rendered and visually reviewed. The 52 chapter bookmarks are retained.
+
 ## Remaining review
 
 - Review the layout and interactions on mobile and complete a broader keyboard and accessibility review.

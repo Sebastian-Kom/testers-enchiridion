@@ -1,5 +1,11 @@
 # Change log
 
+## V103 PDF typography update — 23 September 2026
+
+- Set the 52 passages drawn from Carter's translation in italics, using the checked source record, including its documented adaptations.
+- Added a reading note immediately before chapter 1 explaining the historical language and referring readers to the source record.
+- Preserved the chapter wording, text color, 35-page format, and CC BY-SA 4.0 licence.
+
 ## V103 publication update — 22 September 2026
 
 - Removed the provisional series label from the website, manuscript, PDF, project metadata, and publishing documentation.
